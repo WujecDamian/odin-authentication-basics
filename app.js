@@ -62,6 +62,12 @@ passport.deserializeUser(async (id, done) => {
     done(err);
   }
 });
+//Local variables middleware
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 //Routes
 
 app.get("/", (req, res) => res.render("index", { user: req.user }));
