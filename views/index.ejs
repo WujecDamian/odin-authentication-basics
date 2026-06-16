@@ -6,6 +6,19 @@
     <title>Home</title>
   </head>
   <body>
-    <h1>Hello imane!</h1>
+    <h1>Hello!</h1>
+    <% if(locals.user) {%>
+    <h1>Welcome back <%=user.username %></h1>
+    <a href="/log-out">Log Out</a>
+    <%} else { %>
+    <h2>Please log in</h2>
+    <form action="/log-in" method="post">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" placeholder="username" />
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" />
+      <button type="submit">Log In</button>
+    </form>
+    <% } %>
   </body>
 </html>
